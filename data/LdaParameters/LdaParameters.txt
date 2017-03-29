@@ -1,0 +1,4 @@
+alphaG	0.16
+alphaL	0.5beta	0.1
+gamma	0.1globalTopicNum	30
+localTopicNum	10iteration	1000saveStep	50beginSaveIters	700
