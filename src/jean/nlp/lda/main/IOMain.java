@@ -6,7 +6,7 @@ import jean.nlp.lda.main.Documents.Document;
 public class IOMain {
 	public static void main(String[] args){
 		System.out.println("Step0: Reading Prior Parameters");
-		LDAModel lda = new LDAModel(CommonConf.PARAMETER_FILE_LOC);
+		LDAModel1 lda = new LDAModel1(CommonConf.PARAMETER_FILE_LOC);
 		
 		Documents docset = new Documents();
 		docset.readDocs(CommonConf.ORIGIN_FILE_LOC);
@@ -19,11 +19,11 @@ public class IOMain {
 		}
 		
 		System.out.println("\nStep1: Initialize Model");
-		lda.Initialize(docset);
+		lda.initialize(docset);
 		
 		System.out.println("\nStep2: Inference Model");
-		lda.Inference();
+		lda.inference();
 		
-		System.out.println("Done!");
+		//System.out.println("Done!");
 	}
 }

@@ -35,6 +35,35 @@ public class FileUtil {
 		}
 	}
 
+public static void readLines(String file, ArrayList<String> lines,int row) {
+		
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new FileReader(new File(file)));
+
+			String line = null;
+			int r = 0;
+			while ((line = reader.readLine()) != null && r < row) {
+				line = line.trim();
+				lines.add(line);
+				
+				r++;
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
 	public static void writeLines(String file, HashMap<?, ?> hashMap) {
 		BufferedWriter writer = null;
 		try {

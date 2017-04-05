@@ -14,7 +14,7 @@ import jean.nlp.lda.distribution.GammaFunction;
 import jean.nlp.lda.main.Documents.Document.Sentence;
 
 public class LDAModel {
-	int D, W, T=5, KG, KL;
+	int D, W, T=2, KG, KL;
 	float alphaG, alphaL;
 	int[] alphaM = new int[2];
 	float beta, gamma;
@@ -156,8 +156,8 @@ public class LDAModel {
 		for (int d = 0; d < D; d++) {
 			Sentence[] sents = docset.docs.get(d).docSents;
 			int S = sents.length;
-			int V = S / T;
-			if(V == 0) V=1; //至少一个窗口
+			int V = S - T + 1;
+			if(V <= 0) V=1; //至少一个窗口
 			
 			Ndsv[d] = new int[S][V];
 			Nds[d] = new int[S];
@@ -598,7 +598,7 @@ public class LDAModel {
 			
 			Ndvlocz[d][newv][newz]++;
 		}
-		System.out.println("newv="+newv+" newr="+newr+" newz="+newz);
+		//System.out.println("newv="+newv+" newr="+newr+" newz="+newz);
 	}
 
 	private int SamplingNumberFromDistribution(double[] p) {
